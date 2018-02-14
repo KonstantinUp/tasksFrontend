@@ -1,0 +1,11 @@
+div button{
+    background:red;
+}
+
+div button:last-child{
+    background:none
+}
+
+div button:first-child{
+    background:none;
+}

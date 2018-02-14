@@ -1,0 +1,23 @@
+tr{
+    text-align:right;
+}
+tr td{
+    width: 38px;
+}
+th:not(:first-child){
+    text-align:left;
+}
+td:not(:first-child){
+    text-align:left;
+
+}
+tbody{
+    border:red solid 1px;
+}
+table {
+    width:110px;
+    background:pink;
+    border-spacing:0 0px;}
+thead tr th{
+    border-bottom: 1px solid red;
+}
