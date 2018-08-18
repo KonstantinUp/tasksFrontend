@@ -1,0 +1,30 @@
+<<<<<<< HEAD
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+=======
+# dependencies
+.idea
+>>>>>>> 7906d7339540897fcf4acfc5fd9085ee59db441d
+/node_modules
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+<<<<<<< HEAD
+yarn-error.log*
+=======
+yarn-error.log*
+>>>>>>> 7906d7339540897fcf4acfc5fd9085ee59db441d
