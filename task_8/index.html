@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+ .input{
+     width: 90%;
+     height: 50px;
+ }
+ .wrapper{
+     display: none;
+ }
+ .wrapper-item{
+     cursor: default;
+ }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <input  class="input" type="text" placeholder = "введите текст">
+<script>
+   let stringsArr = ['Asdasdasdasdasd','asaaaaaaaa','32434234','opoppiopiopiopiopiopio',''];
+   let lengthStringsArr = stringsArr.length;
+
+   let  wrapperDiv =  document.createElement('div');
+   wrapperDiv.className = "wrapper";
+
+   for(let i=0;i<lengthStringsArr;i++){
+       let  divInner =  document.createElement('div');
+       divInner.className = "wrapper-item";
+       divInner.innerHTML = stringsArr[i];
+       wrapperDiv.appendChild(divInner);
+   }
+   let script = document.body.lastChild;
+   console.log(script);
+   document.body.insertBefore(wrapperDiv,script);
+
+   let input =  document.getElementsByClassName('input')[0];
+
+     input.onclick = function(e){
+       e.stopPropagation();
+     };
+
+     wrapperDiv.onclick = function(e){
+         e.stopPropagation()
+     };
+
+     input.onfocus = function () {
+         wrapperDiv.setAttribute("style", "display: block;");
+     };
+
+     document.body.onclick = function () {
+       wrapperDiv.setAttribute("style", "display: none;");
+     };
+
+     input.oninput = function () {
+         let counter = 0;
+         wrapperDiv .innerHTML = '';
+
+         if(input.value == ''){
+             for(let i=0;i<lengthStringsArr;i++){
+                 let  divInner =  document.createElement('div');
+                 divInner.className = "wrapper-item";
+                 divInner.innerHTML = stringsArr[i];
+                 wrapperDiv.appendChild(divInner);
+             }
+         } else {
+             outer: for(let i=0;i<lengthStringsArr;i++){
+                 let  lengthString = stringsArr[i].length;
+                 counter = 0;
+                 for (let j=0;j<lengthString;j++) {
+                     if(stringsArr[i][j].toUpperCase() == input.value[j].toUpperCase()){
+                         counter++;
+                     }  else {
+                         continue outer;
+                     }
+
+                     if(counter == input.value.length){
+                         let  divInner =  document.createElement('div');
+                         divInner.className = "wrapper-item";
+                         divInner.innerHTML = stringsArr[i];
+                         divInner.setAttribute("style", "cursor: pointer;");
+                         divInner.onclick = function(){
+                           input.value = this.innerHTML;
+                           wrapperDiv.setAttribute("style", "display: none;");
+                         };
+                         wrapperDiv.insertBefore(divInner,wrapperDiv.firstChild);
+                         continue outer;
+                     }
+                 }
+             }
+         }
+     };
+</script>
+</body>
+</html>
